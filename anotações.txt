@@ -1,0 +1,33 @@
+// algoritmo para atualizar os sorteados na coleção quadras 
+
+db.resultados.find({}).forEach(function(obj){ print(obj._id); db.quadras.update({'d1': obj.d1, 'd2': obj.d2, 'd3': obj.d3, 'd4': obj.d4, 'sorteado': 0}, {$set: {sorteado: 1}})})
+
+// comando para salvar arquivo csv no mongodb 
+
+//mongoimport --db resultados --collection quadras --type csv --headerline --file /home/nieraldo/megasena/quadras.csv
+
+quantidade de quadras possíveis = 487635
+
+for(var i = 0; i <= pretendentes.length - 1; i++){
+
+			if(!flag){
+				console.log(pretendentes[i-1]);
+				console.log(arraySorteados[j]);
+				break;
+			}
+
+			for(var j = 0; j <= arraySorteados.length - 1; j++){
+				flag = 
+					(
+
+						pretendentes[i].d1 !== arraySorteados[j].d1
+						&&
+						pretendentes[i].d2 !== arraySorteados[j].d2
+						&&
+						pretendentes[i].d3 !== arraySorteados[j].d3
+						&&
+						pretendentes[i].d4 !== arraySorteados[j].d4
+
+					)
+			}
+		}//fim do laço duplo for

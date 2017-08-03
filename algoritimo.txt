@@ -1,0 +1,34 @@
+1) Passo 1
+
+	Criar o BANCO de DADOS AMOSTRAL (BDA) relacionado ao objeto:
+		var numero = {
+			sorteado: Boolean,	
+			d1: Number,
+			d2: Number,
+			d3: Number,
+			d4: Number,
+		}
+
+2) Realizar a combinação dos 60 números da megasena e armazená-los no BDA em ordem crescente;
+
+3) Combinar para cada resultado de sorteio da megasena seus números 4 a 4 e comparar com o resultado do BDA. Caso essa combinação exista, atualizar o atributo sorteado para true; caso não false;
+
+4) Escolher aleatoriamente um documento do BDA (DABDA);
+
+5) Escolher um documento do BDA que possua APENAS um atributo  igual ao DABDA e esteja setado como false; (NC1 - número coincidente um).
+
+6) Criar um array de nome arrayFase6 com os sete números formados por essas duas quadras;
+
+7) Combinar 4 a 4 os números do arrayFase6 e comparar com os documentos do BDA. Caso em qualquer idêntico no DBA o atributo sorteado esteja setado como true, repetir os passos 5, 6 e 7, caso não haja essa condição, prosseguir para o passo 8.  
+
+8) Escolher um documento do BDA que possua APENAS um atributo  igual ao arrayFase6 e esteja setado como false; (NC2 - número coincidente dois).
+
+9) Criar um array de nome arrayFase9 com os onze números formados por essas duas quadras;
+
+10) Combinar 4 a 4 os números do arrayFase9 e comparar com os documentos do BDA. Caso em qualquer idêntico no DBA o atributo sorteado esteja setado como true, repetir os passos 8, 9 e 10, caso não haja essa condição, prosseguir para o passo 11.
+
+11) Escolher um documento do BDA que possua APENAS um atributo  igual ao arrayFase9 e esteja setado como false; (NC3 - número coincidente três).
+
+12) Criar um array de nome arrayFase12 com os quinze números formados por essas duas quadras;
+
+13) Combinar 4 a 4 os números do arrayFase12 e comparar com os documentos do BDA. Caso em qualquer idêntico no DBA o atributo sorteado esteja setado como true, repetir os passos 11, 12 e 13, caso não haja essa condição, encontramos um jogo de 15 dezenas, onde nenhum de suas combinações de quadras foi sorteada.
