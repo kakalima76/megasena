@@ -5,6 +5,7 @@ var urlQuadras = 'http://localhost:3010/quadras';
 var urlAtualizar = 'http://localhost:3010/quadras/atualizar';
 var urlSorteados = 'http://localhost:3010/resultados';
 var arraySorteados = [];
+var sorteados = []; //recebera o arraySorteados em forma de String
 var arrayQuadras = [];
 
 //Ao carregar o módulo, carregar inicialmente todas ao resultados
@@ -100,10 +101,24 @@ var inicial = function(){
 	})
 }
 
+var normaliza = function(value){
+	if (value < 10) {
+		return 0 + "" + value;
+	}
+
+	return value;
+}
+
 
 var promisse = inicial();
 promisse.then(function(arraySorteados){//todas as outras funções dependerão da leitura da coleção de resultados ja sorteados
-/*
+
+	arraySorteados.forEach(function(value){
+		sorteados.push(normaliza(value.d1.toString()) + normaliza(value.d2.toString()) + normaliza(value.d3.toString()) + normaliza(value.d4.toString()));
+	})
+
+
+
 	var promisse = achaQuadra();
 	promisse
 	.then(function(quadras){
@@ -194,62 +209,67 @@ promisse.then(function(arraySorteados){//todas as outras funções dependerão d
 		//Salvo no array seteElementos
 		//Agora é construir um novo jogo com 11 dezenas
 
-		flag = true;
+		//Primeiramente deve-se retirar qualquer quadra
+		//que possua algum elemento no array seteElementos
+
+
+			do
+			{
+
+						var soma = 0;
+						var soma2 = 0;
+
+
+				for(var i = 0; i <= quadras.length - 1; i++){
+
+							var a = quadras[i].d1;
+							var b = quadras[i].d2;
+							var c = quadras[i].d3;
+							var d = quadras[i].d4;
+
+							soma = 
+							seteElementos.indexOf(quadras[i].d1) +
+							seteElementos.indexOf(quadras[i].d2) + 
+							seteElementos.indexOf(quadras[i].d3) + 
+							seteElementos.indexOf(quadras[i].d4)
+					
+
+							if(soma === -4 && (d-c-b-a) !== (-1)*(2*a)){
+
+
+								//assim eu descubro uma quadra que não tem semelhanças
+								//dentro do grupo de 7 dezenas
+								//e verifico se alguma combinação dele com o grupo de sete
+								//ja foi sorteado em algum momento
+								var res = incorporaArrayDe7Combinatoria(seteElementos, quadras[i]);
+
+								for(var j = 0; j<= res.length - 1; j++){
+									soma2 += sorteados.indexOf(res[j])
+								}
+
+								if(soma2 > -330){
+									console.log('rejeitado');
+									console.log(quadras[i]);
+									console.log(soma2 + '\n');
+									quadras.splice(i, 1);
+								}else{
+									console.log('eleito');
+									console.log(quadras[i]);
+								}
+
+							}
+
+						}
+
+					console.log(soma2);
+
+			}while(soma2 > -330)
+
+console.log('Tempo: ' + (new Date() - dt) + ' milissegundos');
 
 	
 
-	})//fim da promisse*/
-
-
-//Primeiramente deve-se retirar qualquer quadra
-//que possua algum elemento no array seteElementos
-
-
-var seteElementos = [11,21,31,41,51,61,71]
-
-var quadras = [
-		{d1: 1, d2: 2, d3: 3, d4: 4},
-		{d1: 11, d2: 22, d3: 31, d4: 41},
-		{d1: 11, d2: 23, d3: 31, d4: 41},
-		{d1: 11, d2: 24, d3: 31, d4: 41},
-		{d1: 1, d2: 2, d3: 3, d4: 5},
-		]
-
-		var soma = 0;
-
-		for(var i = 0; i <= quadras.length - 1; i++){
-
-			var a = quadras[i].d1;
-			var b = quadras[i].d2;
-			var c = quadras[i].d3;
-			var d = quadras[i].d4;
-
-			soma = 
-			seteElementos.indexOf(quadras[i].d1) +
-			seteElementos.indexOf(quadras[i].d2) + 
-			seteElementos.indexOf(quadras[i].d3) + 
-			seteElementos.indexOf(quadras[i].d4)
-			console.log(soma);
-
-
-			if(soma === -4 && (d-c-b-a) !== (-1)*(2*a)){
-				//assim eu descubro uma quadra que não tem semelhanças
-				//dentro do grupo de 7 dezenas
-				//e verifico se alguma combinação dele com o grupo de sete
-				//ja foi sorteado em algum momento
-
-				for(var j = 0; j<= arraySorteados.length - 1; j++){
-
-				}
-
-
-			}
-
-		}
-		
-console.log('Tempo: ' + (new Date() - dt));
-
-
+	})//fim da promisse
 
 })//fim da promisse incial
 
