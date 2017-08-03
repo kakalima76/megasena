@@ -242,6 +242,7 @@ promisse.then(function(arraySorteados){//todas as outras funções dependerão d
 								//e verifico se alguma combinação dele com o grupo de sete
 								//ja foi sorteado em algum momento
 								var res = incorporaArrayDe7Combinatoria(seteElementos, quadras[i]);
+								soma2 = 0;
 
 								for(var j = 0; j<= res.length - 1; j++){
 									soma2 += sorteados.indexOf(res[j])
