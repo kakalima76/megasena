@@ -1,0 +1,54 @@
+// algoritmo para atualizar os sorteados na coleção quadras 
+
+db.resultados.find({}).forEach(function(obj){ print(obj._id); db.quadras.update({'d1': obj.d1, 'd2': obj.d2, 'd3': obj.d3, 'd4': obj.d4, 'sorteado': 0}, {$set: {sorteado: 1}})})
+
+// comando para salvar arquivo csv no mongodb 
+
+//mongoimport --db resultados --collection quadras --type csv --headerline --file /home/nieraldo/quadras.csv
+
+quantidade de quadras possíveis = 487635
+
+for(var i = 0; i <= pretendentes.length - 1; i++){
+
+			if(!flag){
+				console.log(pretendentes[i-1]);
+				console.log(arraySorteados[j]);
+				break;
+			}
+
+			for(var j = 0; j <= arraySorteados.length - 1; j++){
+				flag = 
+					(
+
+						pretendentes[i].d1 !== arraySorteados[j].d1
+						&&
+						pretendentes[i].d2 !== arraySorteados[j].d2
+						&&
+						pretendentes[i].d3 !== arraySorteados[j].d3
+						&&
+						pretendentes[i].d4 !== arraySorteados[j].d4
+
+					)
+			}
+		}//fim do laço duplo for
+
+'01020304'
+
+
+		db.quadras.update( {} , { $rename : { "'quadra'" : "quadras" }}, true, true ); 
+
+
+> db.quadras.find().forEach(function(obj){db.quadras.update({quadras: obj.quadras}, {$set: {quadras: obj.quadras.substring(1,9)}})})
+
+		
+		
+var filtroSegundaQuadra = function(value){
+		return
+		(value.substring(arrayDeIndice[0], arrayDeIndice[0] + 2) === '01') //!== inicialQuadra.substring(arrayDeIndice[0], arrayDeIndice[0] + 2))
+		&&
+		(value.substring(arrayDeIndice[1], arrayDeIndice[1] + 2) === '02') //!== inicialQuadra.substring(arrayDeIndice[1], arrayDeIndice[1] + 2))
+		&&
+		(value.substring(arrayDeIndice[2], arrayDeIndice[2] + 2) === '03') //!== inicialQuadra.substring(arrayDeIndice[2], arrayDeIndice[2] + 2))
+		&&
+		(value.substring(arrayDeIndice[3], arrayDeIndice[3] + 2) === '04') //=== inicialQuadra.substring(arrayDeIndice[3], arrayDeIndice[3] + 2))
+	}
