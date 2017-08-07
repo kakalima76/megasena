@@ -1,0 +1,25 @@
+{
+  "name": "megasena",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mega.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kakalima76/megasena.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kakalima76/megasena/issues"
+  },
+  "homepage": "https://github.com/kakalima76/megasena#readme",
+  "dependencies": {
+    "readline-promise": "0.0.1"
+  }
+}

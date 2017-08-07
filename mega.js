@@ -194,11 +194,143 @@ promise
 		}while(!oitavaDezenaFlag)
 
 
+		//Nesse ponto posso afirmar que esse jogo de 08 dezenas(quintaQuadra)
+		//utilizado foi aprovada e está pronta para receber uma nona dezena
+		//logo preciso retirar a oitavaDezena do espaço amostral da sena
+
+		var indice = sena.indexOf(oitavaDezena);
+		sena.splice(indice, 1);
+		quadras = controller.combina(sena);
+
+
+		do
+		{
+
+			var nonaDezenaFlag = true;
+		
+			var pos = controller.getRandomInt(0,sena.length - 1);
+			var nonaDezena = sena[pos];
+
+			
+			//Insiro a nona dezena no jogo, criando asim um novo
+			//jogo com nove dezenas
+			var sextaQuadra = controller.compoeJogo(quintaQuadra, nonaDezena);
+			
+			//Testo para ver se há alguma combinação de quadras
+			//nessa sena que ja foi sorteada
+
+			var a = controller.geraString(sextaQuadra);
+			
+
+			for(var i = 0; i <= a.length - 1; i++){	
+				if(resultados.indexOf(a[i]) > -1){
+					
+					sextaQuadra = controller.descompoeJogo(sextaQuadra, nonaDezena);
+					nonaDezenaFlag = false;
+					break;
+				}
+
+
+			}
+		}while(!nonaDezenaFlag)
+
+
+		//Nesse ponto posso afirmar que esse jogo de 09 dezenas(sextaQuadra)
+		//utilizado foi aprovada e está pronta para receber uma nona dezena
+		//logo preciso retirar a oitavaDezena do espaço amostral da sena
+
+		//Aqui da décima dezena pra frente preciso fazer com que todas as
+		//dezenas da sena sejam verificadas, então usarei um contador para 
+		//assegurar esse processo e poder parar a estrutura do..while
+
+		var indice = sena.indexOf(nonaDezena);
+		sena.splice(indice, 1);
+		quadras = controller.combina(sena);
+
+
+		var countDecimaDezena = 0;
+
+		do
+		{
+
+			var decimaDezenaFlag = true;
+			var decimaDezena = sena[countDecimaDezena];
+			countDecimaDezena++;
+			
+			//Insiro a decima dezena no jogo, criando asim um novo
+			//jogo com dez dezenas
+			var setimaQuadra = controller.compoeJogo(sextaQuadra, decimaDezena);
+			
+			//Testo para ver se há alguma combinação de quadras
+			//nessa sena que ja foi sorteada
+
+			var a = controller.geraString(setimaQuadra);
+			
+
+			for(var i = 0; i <= a.length - 1; i++){	
+				if(resultados.indexOf(a[i]) > -1){
+					
+					setimaQuadra = controller.descompoeJogo(setimaQuadra, decimaDezena);
+					decimaDezenaFlag = false;
+					break;
+				}
+
+
+			}
+		}while(!decimaDezenaFlag && (countDecimaDezena !== (sena.length - 1)))
+
+
+		//Nesse ponto posso afirmar que esse jogo de 10 dezenas(setimaQuadra)
+		//utilizado foi aprovada e está pronta para receber uma nona dezena
+		//logo preciso retirar a oitavaDezena do espaço amostral da sena
+
+		var indice = sena.indexOf(decimaDezena);
+		sena.splice(indice, 1);
+		quadras = controller.combina(sena);
+
+
+		var countDecimaPrimeiraDezena = 0;
+
+		do
+		{
+
+			var decimaPrimeiraDezenaFlag = true;
+			var decimaPrimeiraDezena = sena[countDecimaPrimeiraDezena];
+			countDecimaPrimeiraDezena++;
+			console.log('tamanho da sena - ' + sena.length - 1);
+			console.log('countDecimaPrimeiraDezena - ' + countDecimaPrimeiraDezena);
+
+			
+			//Insiro a decima primeira dezena no jogo, criando asim um novo
+			//jogo com onze dezenas
+			var oitavaQuadra = controller.compoeJogo(setimaQuadra, decimaPrimeiraDezena);
+			
+			//Testo para ver se há alguma combinação de quadras
+			//nessa sena que ja foi sorteada
+
+			var a = controller.geraString(oitavaQuadra);
+			
+
+			for(var i = 0; i <= a.length - 1; i++){	
+				if(resultados.indexOf(a[i]) > -1){
+					
+					oitavaQuadra = controller.descompoeJogo(oitavaQuadra, decimaPrimeiraDezena);
+					decimaPrimeiraDezenaFlag = false;
+					break;
+				}
+
+
+			}
+		}while(!decimaPrimeiraDezenaFlag && (countDecimaPrimeiraDezena !== (sena.length - 1)))
+
 
 		console.log(quintaDezena);
 		console.log(sextaDezena);
 		console.log(setimaDezena);
 		console.log(oitavaDezena);
+		console.log(nonaDezena);
+		console.log(decimaDezena);
+		console.log(decimaPrimeiraDezena);
 
 	
 	})//fim da promise de quadras
