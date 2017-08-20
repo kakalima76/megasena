@@ -193,8 +193,8 @@ var normaliza = function(value){
    exports.geraString = function(aux)//adiciono um array com a combinação de quadras
     {
 
-        console.log('geraString linha 196 ' + aux.length);
-        console.log('geraString linha 197 ' +aux);
+        //console.log('geraString linha 196 ' + aux.length);
+        //console.log('geraString linha 197 ' +aux);
            
             var q = aux.length - 4;
             var array = [];
@@ -228,5 +228,34 @@ var normaliza = function(value){
             }  
 
     };
+
+
+
+    exports.geraDuplas = function(aux)//adiciono um array com a combinação de quadras
+    {
+
+        //console.log('geraString linha 196 ' + aux.length);
+        //console.log('geraString linha 197 ' +aux);
+           
+            var q = aux.length - 2;
+            var array = [];
+
+            for(var i = 0; i <= q; i++)
+            {
+                    for(var j = i + 1; j <= q + 1; j++)
+                {
+                        if(j === i){continue;}
+                                                                   
+                            array.push(aux[i]+""+aux[j]);
+                            //console.log(aux[i]+""+aux[j])
+                        
+                                if(i === q){
+                                    return array;
+                                }
+                }
+            }  
+
+    };
+
 
    
